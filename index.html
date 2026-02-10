@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Important Question 💙</title>
+<title>Valentine 💙</title>
 
 <style>
 body {
@@ -11,33 +11,29 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
     background:
-        url("images/Stitch.jpg") no-repeat left 3% center,
+        url("images/Stitch.jpg") no-repeat left 4% center,
         linear-gradient(135deg, #a2d2ff, #cdb4db);
+
     background-size: 260px, cover;
-    font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+    font-family: "Comic Sans MS", cursive;
     overflow: hidden;
 }
 
 /* Card */
-.box {
+.card {
     background: #f8fbff;
-    padding: 45px 65px;
-    border-radius: 30px;
-    box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+    padding: 40px 60px;
+    border-radius: 28px;
     text-align: center;
-    z-index: 10;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.25);
     max-width: 520px;
+    z-index: 10;
 }
 
-h1 {
-    color: #1d4ed8;
-}
-
-p {
-    color: #334155;
-    margin-bottom: 18px;
-}
+h1 { color: #1d4ed8; }
+p  { color: #334155; }
 
 /* Buttons */
 button {
@@ -61,20 +57,13 @@ button {
     color: #0f172a;
 }
 
-#menuBtn {
-    background: #1d4ed8;
-    color: white;
-    margin-top: 20px;
-}
-
 /* Menu */
 .menu {
     background: #eef4ff;
-    padding: 20px;
     border-radius: 20px;
+    padding: 20px;
     margin-top: 20px;
     text-align: left;
-    animation: fadeIn 0.5s ease;
 }
 
 .menu h2 {
@@ -89,19 +78,12 @@ button {
 
 .menu li {
     margin: 8px 0;
-    font-size: 17px;
 }
 
 .footer {
     margin-top: 15px;
     text-align: center;
-    font-size: 15px;
-    color: #475569;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    font-size: 14px;
 }
 
 /* Confetti */
@@ -115,24 +97,27 @@ button {
 
 @keyframes fall {
     from { transform: translateY(-100vh) rotate(0deg); }
-    to { transform: translateY(100vh) rotate(720deg); }
+    to   { transform: translateY(100vh) rotate(720deg); }
 }
 </style>
 </head>
 
 <body>
 
-<div class="box" id="box">
+<div class="card" id="card">
     <h1>Will you be my Valentine? 💙</h1>
     <p>(Hover NO if you dare 😌)</p>
 
-    <button id="yes" onclick="finalYes()">Yes 💙</button>
+    <button id="yes">Yes 💙</button>
     <button id="no">No 😏</button>
 </div>
 
 <script>
 let stage = 0;
-const noBtn = document.getElementById("no");
+
+const noBtn  = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const card   = document.getElementById("card");
 
 const stages = [
     { text: "Really?", scale: 1.3 },
@@ -140,7 +125,7 @@ const stages = [
     { text: "Oh my God, I'm flying 🚀", scale: 2.3 }
 ];
 
-/* Hover ON */
+/* HOVER LOGIC */
 noBtn.addEventListener("mouseenter", () => {
     if (stage === 0) {
         noBtn.textContent = "Yes 💙";
@@ -149,7 +134,6 @@ noBtn.addEventListener("mouseenter", () => {
     }
 });
 
-/* Hover OFF */
 noBtn.addEventListener("mouseleave", () => {
     if (stage === 0) {
         noBtn.textContent = "No 😏";
@@ -158,34 +142,38 @@ noBtn.addEventListener("mouseleave", () => {
     }
 });
 
-/* Click */
+/* CLICK LOGIC */
 noBtn.addEventListener("click", () => {
     if (stage < stages.length) {
         noBtn.textContent = stages[stage].text;
         noBtn.style.transform = `scale(${stages[stage].scale})`;
         stage++;
     } else {
-        finalYes();
+        showFinal();
     }
 });
 
-function finalYes() {
-    document.getElementById("box").innerHTML = `
-        <h1 style="font-size:36px;">Aiyo va di en thangoooooo 💙🥹</h1>
+yesBtn.addEventListener("click", showFinal);
+
+/* FINAL SCREEN */
+function showFinal() {
+    card.innerHTML = `
+        <h1>Aiyo va di en thangoooooo 💙🥹</h1>
         <p>
-            Nee smile pannale podhum…  
+            Nee smile pannale podhum…<br>
             indha Stitch-um en heart-um melt aaidum 💙🫠
         </p>
         <p>
             Valentine illa… nee dhaan en whole universe 😌🌍
         </p>
 
-        <button id="menuBtn" onclick="showMenu()">Food Menu 🍽️</button>
+        <button onclick="showMenu()">Food Menu 🍽️</button>
         <div id="menuArea"></div>
     `;
     popConfetti();
 }
 
+/* MENU */
 function showMenu() {
     document.getElementById("menuArea").innerHTML = `
         <div class="menu">
@@ -204,13 +192,14 @@ function showMenu() {
     `;
 }
 
+/* CONFETTI */
 function popConfetti() {
-    for (let i = 0; i < 140; i++) {
+    for (let i = 0; i < 120; i++) {
         const c = document.createElement("div");
         c.className = "confetti";
         c.style.left = Math.random() * 100 + "vw";
         c.style.background =
-            ["#3b82f6", "#60a5fa", "#93c5fd", "#1d4ed8"][Math.floor(Math.random() * 4)];
+            ["#3b82f6","#60a5fa","#93c5fd","#1d4ed8"][Math.floor(Math.random()*4)];
         c.style.animationDuration = Math.random() * 2 + 1.5 + "s";
         document.body.appendChild(c);
         setTimeout(() => c.remove(), 3500);
