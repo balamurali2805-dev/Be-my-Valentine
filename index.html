@@ -5,64 +5,118 @@
 <title>Important Question 💙</title>
 
 <style>
-    body {
-        height: 100vh;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        url("images/Stitch.jpg") no-repeat left 3% center,
+        linear-gradient(135deg, #a2d2ff, #cdb4db);
+    background-size: 260px, cover;
+    font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+    overflow: hidden;
+}
 
-        /* LEFT Stitch image only */
-        background:
-            url("./images/Stitch.jpg") no-repeat left 3% center,
-            linear-gradient(135deg, #a2d2ff, #cdb4db);
+/* Card */
+.box {
+    background: #f8fbff;
+    padding: 45px 65px;
+    border-radius: 30px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+    text-align: center;
+    z-index: 10;
+    max-width: 520px;
+}
 
-        background-size: 260px, cover;
-        font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
-        overflow: hidden;
-    }
+h1 {
+    color: #1d4ed8;
+}
 
-    .box {
-        background: #f8fbff;
-        padding: 45px 65px;
-        border-radius: 30px;
-        box-shadow: 0 18px 45px rgba(0,0,0,0.25);
-        text-align: center;
-        position: relative;
-        z-index: 10;
-        max-width: 520px;
-    }
+p {
+    color: #334155;
+    margin-bottom: 18px;
+}
 
-    h1 {
-        color: #1d4ed8;
-        margin-bottom: 10px;
-    }
+/* Buttons */
+button {
+    font-size: 18px;
+    padding: 14px 36px;
+    border-radius: 45px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
 
-    p {
-        color: #334155;
-        margin-bottom: 20px;
-    }
+#yes {
+    background: #3b82f6;
+    color: white;
+}
 
-    button {
-        font-size: 18px;
-        padding: 14px 36px;
-        border-radius: 45px;
-        border: none;
-        cursor: pointer;
-        margin: 10px;
-        font-weight: bold;
-        transition: transform 0.3s ease;
-    }
+#no {
+    background: #93c5fd;
+    color: #0f172a;
+}
 
-    #yes {
-        background: #3b82f6;
-        color: white;
-    }
+#menuBtn {
+    background: #1d4ed8;
+    color: white;
+    margin-top: 20px;
+}
 
-    #no {
-        background: #93c5fd;
-        color: #0f172a;
-    }
+/* Menu */
+.menu {
+    background: #eef4ff;
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: left;
+    animation: fadeIn 0.5s ease;
+}
+
+.menu h2 {
+    text-align: center;
+    color: #1d4ed8;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 8px 0;
+    font-size: 17px;
+}
+
+.footer {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 15px;
+    color: #475569;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Confetti */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    animation: fall 2.5s linear forwards;
+    z-index: 999;
+}
+
+@keyframes fall {
+    from { transform: translateY(-100vh) rotate(0deg); }
+    to { transform: translateY(100vh) rotate(720deg); }
+}
 </style>
 </head>
 
@@ -125,7 +179,42 @@ function finalYes() {
         <p>
             Valentine illa… nee dhaan en whole universe 😌🌍
         </p>
+
+        <button id="menuBtn" onclick="showMenu()">Food Menu 🍽️</button>
+        <div id="menuArea"></div>
     `;
+    popConfetti();
+}
+
+function showMenu() {
+    document.getElementById("menuArea").innerHTML = `
+        <div class="menu">
+            <h2>Today’s Special 💙</h2>
+            <ul>
+                <li>🥗 Starters — <b>Me</b></li>
+                <li>🍝 Main Course — <b>Me</b></li>
+                <li>🍰 Desserts — <b>Me</b></li>
+                <li>☕ Beverages — <b>Me</b></li>
+            </ul>
+            <div class="footer">
+                Sit back and relax. Everything is reserved 😌<br>
+                <b>14/02/26 – 3:30 PM</b>
+            </div>
+        </div>
+    `;
+}
+
+function popConfetti() {
+    for (let i = 0; i < 140; i++) {
+        const c = document.createElement("div");
+        c.className = "confetti";
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.background =
+            ["#3b82f6", "#60a5fa", "#93c5fd", "#1d4ed8"][Math.floor(Math.random() * 4)];
+        c.style.animationDuration = Math.random() * 2 + 1.5 + "s";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 3500);
+    }
 }
 </script>
 
