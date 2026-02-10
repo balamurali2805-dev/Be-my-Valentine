@@ -12,14 +12,12 @@
         justify-content: center;
         align-items: center;
 
-        /* Stitch background images */
+        /* ONLY ONE Stitch image on the LEFT, ZOOMED */
         background:
-            url("images/Stitch.jpg") no-repeat left 5% top 10%,
-            url("images/Stitch.jpg") no-repeat right 5% bottom 15%,
-            url("images/Stitch.jpg") no-repeat right 15% top 10%,
+            url("images/Stitch.jpg") no-repeat left 3% center,
             linear-gradient(135deg, #a2d2ff, #cdb4db);
 
-        background-size: 120px, 140px, 100px, cover;
+        background-size: 260px, cover;
         font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
         overflow: hidden;
     }
@@ -103,7 +101,7 @@
         { text: "Oh my God, I'm flying 🚀", scale: 2.4 }
     ];
 
-    // Hover: ONLY text changes to Yes
+    // Hover: ONLY text changes
     function hoverNo() {
         const noBtn = document.getElementById("no");
         if (!hovered) {
@@ -114,7 +112,7 @@
         }
     }
 
-    // Click: size + drama
+    // Click: size changes
     function growNo() {
         const noBtn = document.getElementById("no");
 
