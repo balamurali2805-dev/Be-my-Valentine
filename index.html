@@ -131,7 +131,6 @@
 
 <script>
     let stage = 0;
-    let hovered = false;
 
     const stages = [
         { text: "Really?", scale: 1.3 },
@@ -139,18 +138,27 @@
         { text: "Oh my God, I'm flying 🚀", scale: 2.4 }
     ];
 
-    function hoverNo() {
+    function hoverNo(isHover) {
         const noBtn = document.getElementById("no");
-        if (!hovered) {
+
+        // Hover ON → show Yes
+        if (isHover && stage === 0) {
             noBtn.innerText = "Yes 💙";
             noBtn.style.background = "#3b82f6";
             noBtn.style.color = "white";
-            hovered = true;
+        }
+
+        // Hover OFF → revert to No
+        if (!isHover && stage === 0) {
+            noBtn.innerText = "No 😏";
+            noBtn.style.background = "#93c5fd";
+            noBtn.style.color = "#0f172a";
         }
     }
 
     function growNo() {
         const noBtn = document.getElementById("no");
+
         if (stage < stages.length) {
             noBtn.innerText = stages[stage].text;
             noBtn.style.transform = `scale(${stages[stage].scale})`;
@@ -172,7 +180,6 @@
             </p>
 
             <button id="menuBtn" onclick="showMenu()">Food Menu 🍽️</button>
-
             <div id="menuArea"></div>
         `;
         popConfetti();
@@ -181,7 +188,7 @@
     function showMenu() {
         document.getElementById("menuArea").innerHTML = `
             <div class="menu">
-                <h2>Chef's Special 💙</h2>
+                <h2>Today’s Special 💙</h2>
                 <ul>
                     <li>🥗 Starters — <b>Me</b></li>
                     <li>🍝 Main Course — <b>Me</b></li>
@@ -209,6 +216,7 @@
         }
     }
 </script>
+
 
 </body>
 </html>
