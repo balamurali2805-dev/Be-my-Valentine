@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Important Question 💘</title>
+<title>Important Question 💙</title>
 
 <style>
     body {
@@ -11,16 +11,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: linear-gradient(135deg, #a2d2ff, #cdb4db);
+        font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
         overflow: hidden;
     }
 
     .box {
-        background: white;
-        padding: 40px 60px;
-        border-radius: 25px;
-        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        background: #f8fbff;
+        padding: 45px 65px;
+        border-radius: 30px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.25);
         text-align: center;
         position: relative;
         z-index: 10;
@@ -28,31 +28,33 @@
 
     h1 {
         margin-bottom: 10px;
+        color: #1d4ed8;
     }
 
     p {
         margin-bottom: 25px;
+        color: #334155;
     }
 
     button {
         font-size: 20px;
-        padding: 14px 34px;
-        border-radius: 40px;
+        padding: 14px 36px;
+        border-radius: 45px;
         border: none;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.35s ease;
         margin: 10px;
+        font-weight: bold;
     }
 
     #yes {
-        background: #ff4d6d;
+        background: #3b82f6;
         color: white;
     }
 
     #no {
-        background: #adb5bd;
-        color: black;
-        position: relative;
+        background: #93c5fd;
+        color: #0f172a;
     }
 
     /* Confetti */
@@ -60,8 +62,7 @@
         position: fixed;
         width: 10px;
         height: 10px;
-        background: red;
-        animation: fall 2s linear forwards;
+        animation: fall 2.5s linear forwards;
         z-index: 999;
     }
 
@@ -75,20 +76,20 @@
 <body>
 
 <div class="box" id="box">
-    <h1>Will you be my Valentine? 💕</h1>
-    <p>(Warning: No wrong answers 😏)</p>
+    <h1>Will you be my Valentine? 💙</h1>
+    <p>(Warning: Clicking NO has side effects 😌)</p>
 
-    <button id="yes" onclick="finalYes()">Yes 💖</button>
-    <button id="no" onmouseover="growNo()" onclick="finalYes()">No 💔</button>
+    <button id="yes" onclick="finalYes()">Yes 💙</button>
+    <button id="no" onclick="growNo()">No 😏</button>
 </div>
 
 <script>
     let stage = 0;
 
     const stages = [
-        { text: "Really?", scale: 1.2 },
-        { text: "Are you sure??", scale: 1.5 },
-        { text: "Oh my God, I'm flying 🚀", scale: 2.2 }
+        { text: "Really?", scale: 1.3 },
+        { text: "Are you sure??", scale: 1.7 },
+        { text: "Oh my God, I'm flying 🚀", scale: 2.4 }
     ];
 
     function growNo() {
@@ -97,32 +98,39 @@
         if (stage < stages.length) {
             noBtn.innerText = stages[stage].text;
             noBtn.style.transform = `scale(${stages[stage].scale})`;
-            noBtn.style.background = "#ff4d6d";
+            noBtn.style.background = "#2563eb";
             noBtn.style.color = "white";
             stage++;
+        } else {
+            finalYes();
         }
     }
 
     function finalYes() {
         document.getElementById("box").innerHTML = `
-            <h1>YAAAAAY 💖🎉</h1>
-            <p>I knew it 😌</p>
-            <p>You’re officially my Valentine 💘</p>
+            <h1 style="font-size:38px;">Aiyo va di en thangoooooo 💙🥹</h1>
+            <p style="font-size:20px; margin-top:15px;">
+                Nee smile pannale podhum…  
+                indha Stitch-um en heart-um melt aaidum 💙🫠
+            </p>
+            <p style="font-size:18px;">
+                Valentine illa… nee dhaan en whole package 😌
+            </p>
         `;
         popConfetti();
     }
 
     function popConfetti() {
-        for (let i = 0; i < 120; i++) {
+        for (let i = 0; i < 140; i++) {
             const confetti = document.createElement("div");
             confetti.className = "confetti";
             confetti.style.left = Math.random() * 100 + "vw";
             confetti.style.background =
-                ["#ff4d6d", "#ffb703", "#ffd6e0", "#ff006e"][Math.floor(Math.random() * 4)];
-            confetti.style.animationDuration = Math.random() * 2 + 1 + "s";
+                ["#3b82f6", "#60a5fa", "#93c5fd", "#1d4ed8"][Math.floor(Math.random() * 4)];
+            confetti.style.animationDuration = Math.random() * 2 + 1.5 + "s";
             document.body.appendChild(confetti);
 
-            setTimeout(() => confetti.remove(), 3000);
+            setTimeout(() => confetti.remove(), 3500);
         }
     }
 </script>
