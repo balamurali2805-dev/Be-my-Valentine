@@ -2,45 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Test NO Button Logic</title>
+<title>Important Question 💙</title>
 
 <style>
-body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #a2d2ff, #cdb4db);
-    font-family: Comic Sans MS, cursive;
-}
+    body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-.box {
-    background: white;
-    padding: 40px 60px;
-    border-radius: 25px;
-    text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,.2);
-}
+        /* LEFT Stitch image only */
+        background:
+            url("./images/Stitch.jpg") no-repeat left 3% center,
+            linear-gradient(135deg, #a2d2ff, #cdb4db);
 
-button {
-    font-size: 20px;
-    padding: 14px 36px;
-    border-radius: 40px;
-    border: none;
-    cursor: pointer;
-    margin: 10px;
-    transition: transform 0.3s ease;
-}
+        background-size: 260px, cover;
+        font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+        overflow: hidden;
+    }
 
-#yes {
-    background: #3b82f6;
-    color: white;
-}
+    .box {
+        background: #f8fbff;
+        padding: 45px 65px;
+        border-radius: 30px;
+        box-shadow: 0 18px 45px rgba(0,0,0,0.25);
+        text-align: center;
+        position: relative;
+        z-index: 10;
+        max-width: 520px;
+    }
 
-#no {
-    background: #93c5fd;
-}
+    h1 {
+        color: #1d4ed8;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #334155;
+        margin-bottom: 20px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 14px 36px;
+        border-radius: 45px;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+
+    #yes {
+        background: #3b82f6;
+        color: white;
+    }
+
+    #no {
+        background: #93c5fd;
+        color: #0f172a;
+    }
 </style>
 </head>
 
@@ -48,6 +70,7 @@ button {
 
 <div class="box" id="box">
     <h1>Will you be my Valentine? 💙</h1>
+    <p>(Hover NO if you dare 😌)</p>
 
     <button id="yes" onclick="finalYes()">Yes 💙</button>
     <button id="no">No 😏</button>
@@ -63,7 +86,7 @@ const stages = [
     { text: "Oh my God, I'm flying 🚀", scale: 2.3 }
 ];
 
-/* HOVER ON */
+/* Hover ON */
 noBtn.addEventListener("mouseenter", () => {
     if (stage === 0) {
         noBtn.textContent = "Yes 💙";
@@ -72,16 +95,16 @@ noBtn.addEventListener("mouseenter", () => {
     }
 });
 
-/* HOVER OFF */
+/* Hover OFF */
 noBtn.addEventListener("mouseleave", () => {
     if (stage === 0) {
         noBtn.textContent = "No 😏";
         noBtn.style.background = "#93c5fd";
-        noBtn.style.color = "black";
+        noBtn.style.color = "#0f172a";
     }
 });
 
-/* CLICK */
+/* Click */
 noBtn.addEventListener("click", () => {
     if (stage < stages.length) {
         noBtn.textContent = stages[stage].text;
@@ -94,8 +117,14 @@ noBtn.addEventListener("click", () => {
 
 function finalYes() {
     document.getElementById("box").innerHTML = `
-        <h1>Aiyo va di en thangoooooo 💙🥹</h1>
-        <p>Valentine illa… nee dhaan 😌</p>
+        <h1 style="font-size:36px;">Aiyo va di en thangoooooo 💙🥹</h1>
+        <p>
+            Nee smile pannale podhum…  
+            indha Stitch-um en heart-um melt aaidum 💙🫠
+        </p>
+        <p>
+            Valentine illa… nee dhaan en whole universe 😌🌍
+        </p>
     `;
 }
 </script>
